@@ -10,15 +10,16 @@ class MyListView extends StatelessWidget {
       body: SafeArea(
         child: Container(
           color: Colors.blue,
-          child: ListView.separated(
-            padding: const EdgeInsets.all(15),
-            separatorBuilder: (BuildContext context, int index){
-              return const Divider();
-            },
+          child: ListView.builder(
+            // padding: const EdgeInsets.all(15),
+            // separatorBuilder: (BuildContext context, int index){
+            //   return const Divider();
+            // },
             itemCount: colorCodes.length,
             itemBuilder: (BuildContext context, int index){
               return Container(
                 height: 100,
+                margin: const EdgeInsets.all(5),
                 color: Colors.amber[colorCodes[index]],
               );
             },
