@@ -63,43 +63,47 @@ import 'package:flutter/material.dart';
 
 // Extract Widget Container
 class MyGridview extends StatelessWidget {
-  // final List<int> _colors = [100,200,300,400,500,600,700];
-  const MyGridview({ Key? key }) : super(key: key);
+  final List<int> _colors = [100,200,300,400,500,600,700];
+  MyGridview({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 5,
-          mainAxisSpacing: 5,
-          childAspectRatio: 1.33,
-          children: [
-            MyGrid(text: "1", color: Colors.amber[100]),
-            MyGrid(text: "2", color: Colors.amber[200]),
-            MyGrid(text: "3", color: Colors.amber[300]),
-            MyGrid(text: "4", color: Colors.amber[400]),
-            MyGrid(text: "5", color: Colors.amber[500]),
-            MyGrid(text: "6", color: Colors.amber[600]),
-            MyGrid(text: "7", color: Colors.amber[700]),
-          ],
-        ),
-
-        // child: GridView.builder(
-        //   itemCount: _colors.length,
-        //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        //     crossAxisCount: 2,
-        //     crossAxisSpacing: 5,
-        //     mainAxisSpacing: 5,
-        //   ), 
-        //   itemBuilder: (BuildContext context, int index){
-        //     return MyGrid(
-        //       text: (index + 1).toString(),
-        //       color: Colors.amber[_colors[index]],
-        //     );
-        //   },
+        // child: GridView.count(
+        //   crossAxisCount: 2,
+        //   crossAxisSpacing: 5,
+        //   mainAxisSpacing: 5,
+        //   childAspectRatio: 1.33,
+        //   children: [
+        //     MyGrid(text: "1", color: Colors.amber[100]),
+        //     MyGrid(text: "2", color: Colors.amber[200]),
+        //     MyGrid(text: "3", color: Colors.amber[300]),
+        //     MyGrid(text: "4", color: Colors.amber[400]),
+        //     MyGrid(text: "5", color: Colors.amber[500]),
+        //     MyGrid(text: "6", color: Colors.amber[600]),
+        //     MyGrid(text: "7", color: Colors.amber[700]),
+        //   ],
         // ),
+
+        child: GridView.builder(
+          itemCount: _colors.length,
+          // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          //   crossAxisCount: 2,
+          //   crossAxisSpacing: 5,
+          //   mainAxisSpacing: 5,
+          // ), 
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 100,
+
+          ),
+          itemBuilder: (BuildContext context, int index){
+            return MyGrid(
+              text: (index + 1).toString(),
+              color: Colors.amber[_colors[index]],
+            );
+          },
+        ),
 
       ),
     );
